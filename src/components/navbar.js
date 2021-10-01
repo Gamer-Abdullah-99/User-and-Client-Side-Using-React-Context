@@ -1,16 +1,16 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../context/context";
 import "./navbar.css";
 
-const { state, dispatch } = useContext(GlobalContext);
-
-const addUser = (a) => {
-  console.log("newuser", a);
-  dispatch({ type: "SIGNUP_USER", payload: a });
-};
 
 function Nav() {
+  // const { state, dispatch } = useContext(GlobalContext);
+
+  const logout = () => {
+  // dispatch({ type: "SIGNOUT_USER"});
+  };
+
   return (
     <nav>
       <ul>
@@ -23,7 +23,7 @@ function Nav() {
         <li>
           <Link to="/login">Login</Link>
         </li>
-        <li onClick={}><a>Log Out</a></li>
+        <li onClick={logout()}><a>Log Out</a></li>
       </ul>
     </nav>
   );
