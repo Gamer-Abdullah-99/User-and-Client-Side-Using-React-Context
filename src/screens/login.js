@@ -13,13 +13,14 @@ export default function Login() {
 
     const checkUser = (x) => {
         let userData = state.users
-        userData.map((a)=> {
+        userData.forEach((a) =>{
             if(a.email === x.email && a.password === x.password){
                 console.log("User Verified");
                 dispatch({ type: "LOGIN_USER", payload: a });
             }
-        })
-      };
+        }
+        )
+    }
     
     return(
         <div id="login">
@@ -38,7 +39,7 @@ export default function Login() {
                 else if(password === ""){
                     setPasswordError('Enter Password')
                 }
-                else{
+                else if (email !== "" && password !== ""){
                     let user = {email,password}
                 checkUser(user)
                 }

@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "../components/navbar";
 import Signup from "../screens/signup";
 import Login from "../screens/login";
-import Studenthome from "../screens/studentHome";
-import Teacherhome from "../screens/teacherHome";
+import Addstudents from "../screens/teacherSide/addStudents";
+import StudentsTable from "../screens/teacherSide/studentsTable";
 
 export default function App() {
   return (
@@ -13,13 +13,16 @@ export default function App() {
         <Nav />
         <Switch>
           <Route exact path="/">
-            <Signup />   
+            <Signup />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/home">
-            {/* <Home /> */}
+          <Route path="/addstud">
+            <Addstudents />
+          </Route>
+          <Route path="/studtable">
+            <StudentsTable />
           </Route>
         </Switch>
       </div>

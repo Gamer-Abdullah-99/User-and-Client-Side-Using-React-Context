@@ -1,14 +1,13 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../context/context";
 import "./navbar.css";
 
-
 function Nav() {
-  // const { state, dispatch } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
 
   const logout = () => {
-  // dispatch({ type: "SIGNOUT_USER"});
+    dispatch({ type: "SIGNOUT_USER" });
   };
 
   return (
@@ -23,7 +22,15 @@ function Nav() {
         <li>
           <Link to="/login">Login</Link>
         </li>
-        <li onClick={logout()}><a>Log Out</a></li>
+        <li onClick={logout}>
+          <a>Log Out</a>
+        </li>
+        <li>
+          <Link to="/addstud">Add Students</Link>
+        </li>
+        <li>
+          <Link to="/studtable">Student Table</Link>
+        </li>
       </ul>
     </nav>
   );

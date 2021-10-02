@@ -2,12 +2,19 @@ export let data = {
   snacks: "Rio",
   drink: "Coffee",
   authUser: {},
+  studentsData: [],
   users: [
     {
       userName: "haider",
       email: "haider@gmail.com",
       password: "123sss555",
       role: "trainer",
+    },
+    {
+      userName: "abdullah",
+      email: "abdullah@gmail.com",
+      password: "123456",
+      role: "student",
     },
     {
       userName: "akram",
@@ -20,22 +27,8 @@ export let data = {
 
 export function reducer(state, action) {
   switch (action.type) {
-    case "UPDATE_SNACK": {
-      return {
-        ...state,
-        snacks: action.payload,
-      };
-    }
-    case "UPDATE_DRINK": {
-      return {
-        ...state,
-        drink: action.payload,
-      };
-    }
     case "SIGNUP_USER": {
       console.log(state.users);
-      // ...state,
-      // users.concat(action.payload),
       let usersClone = state.users.slice(0);
       usersClone.push(action.payload);
       return {
@@ -54,7 +47,16 @@ export function reducer(state, action) {
       console.log(state.authUser);
       return {
         ...state,
-        authUser: null,
+        authUser: {},
+      };
+    }
+    case "ADD_STUDENTS": {
+      console.log(state.studentsData);
+      let studentsDataClone = state.studentsData.slice(0);
+      studentsDataClone.push(action.payload);
+      return {
+        ...state,
+        studentsData: studentsDataClone,
       };
     }
     default:
