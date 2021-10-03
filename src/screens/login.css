@@ -17,6 +17,20 @@
   padding: 10px;
   border-radius: 10px;
 }
+#btn-1 {
+  color: black;
+  font-family: cursive;
+  font-size: large;
+  font-weight: bold;
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+}
+#btn-1:hover {
+  color: blue;
+  cursor: pointer;
+}
 
 input {
   height: 25px;
@@ -24,7 +38,11 @@ input {
   border: none;
   padding: 5px;
 }
-span{
-    color:red;
-    font-size: 15px;
-  }
+span {
+  color: red;
+  font-size: 15px;
+}
+a:hover {
+  color: blue;
+  cursor: pointer;
+}

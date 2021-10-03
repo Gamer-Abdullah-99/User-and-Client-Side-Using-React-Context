@@ -1,5 +1,6 @@
 import React,{useState ,useContext} from "react";
 import { GlobalContext } from "../context/context";
+import { Link , useHistory} from "react-router-dom";
 import './signup.css'
 
 export default function Signup() {
@@ -12,11 +13,14 @@ export default function Signup() {
     const[passwordError,setPasswordError] = useState('');
     const[roleError,setRoleError] = useState('');
 
+    let history = useHistory();
+
     const { state, dispatch } = useContext(GlobalContext);
 
     const addUser = (a) => {
         console.log("newuser", a);
         dispatch({ type: "SIGNUP_USER", payload: a });
+        history.push("/login");
       };
     
     return(
@@ -34,11 +38,11 @@ export default function Signup() {
             <br />
             Role : 
             
-            <label><input type="radio" value="Teacher" name="role" onChange={(a)=>{setRole(a.target.value)}}/>Teacher </label>
-            <label><input type="radio" value="Student" name="role" onChange={(a)=>{setRole(a.target.value)}}/>Student </label>
+            <label><input type="radio" value="teacher" name="role" onChange={(a)=>{setRole(a.target.value)}}/>Teacher </label>
+            <label><input type="radio" value="student" name="role" onChange={(a)=>{setRole(a.target.value)}}/>Student </label>
             <span>{roleError}</span>
             <br/>
-            <button onClick={()=>{
+            <button id="btn-1" onClick={()=>{
                 if(username === ""){
                     setUsernameError('Enter User Name')
                 }
@@ -58,6 +62,8 @@ export default function Signup() {
                     addUser(newUserObj)
                 }
             }}>Submit</button>
+            <br />
+            <h5>Click here to <Link to="/login">Login</Link></h5>
         </div>
     )
 }

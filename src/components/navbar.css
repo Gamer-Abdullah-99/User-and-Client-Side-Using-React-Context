@@ -13,15 +13,21 @@ ul li {
   align-self: center;
   list-style: none;
   /* justify-content: center; */
-}
-a {
   text-decoration: none;
   color: black;
   font-weight: 500;
   font-family: cursive;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 a:hover {
+  color: blue;
+  cursor: pointer;
+}
+li:hover {
   color: blue;
   cursor: pointer;
 }

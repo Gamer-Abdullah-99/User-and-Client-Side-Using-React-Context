@@ -9,8 +9,10 @@ export default function Addstudents(){
 
     const addstud = (a) => {
         console.log("newstud", a);
-        dispatch({ type: "ADD_STUDENTS", payload: a });
+        dispatch({ type: "ADD_STUDENTS_DATA", payload: a });
       };
+
+      let grade;
 
     const[studentName,setstudentName] = useState('');
     const[rollNo,setRollNo] = useState('');
@@ -32,14 +34,14 @@ export default function Addstudents(){
             Roll No : <br/><input type="text" value={rollNo} onChange={(a)=>{setRollNo(a.target.value)}} className="dataFields" placeholder="Enter Roll No"/>
             <span>{rollNoError}</span>
             <br />
-            Total Marks : <br/><input type="text" value={totalMarks} onChange={(a)=>{setTotalMarks(a.target.value)}} className="dataFields" placeholder="Enter Total Marks"/>
+            Total Marks (Out of 500): <br/><input type="text" value={totalMarks} onChange={(a)=>{setTotalMarks(a.target.value)}} className="dataFields" placeholder="Enter Total Marks"/>
             <span>{totalMarksError}</span>
             <br />
             Feedback : 
             <br/><textarea value={feedback} onChange={(a)=>{setFeedback(a.target.value)}} className="dataFields feedback" placeholder="Enter Feedback"/>
             <span>{FeedbackError}</span>
             <br/>
-            <button onClick={()=>{
+            <button id="btn-1" onClick={()=>{
                 if(studentName === ""){
                     setstudentNameError('Enter Student Name')
                 }
@@ -53,9 +55,16 @@ export default function Addstudents(){
                     setFeedbackError('Select Feedback')
                 }
                 else{
+                    if(totalMarks >= 450){ grade="A+"}
+                    else if(totalMarks >= 400){ grade ="A"}
+                    else if(totalMarks >= 320){ grade = "B"}
+                    else if(totalMarks >= 250){ grade= "C"}
+                    else if(totalMarks < 250){ grade ="F"}
+                    
                     let newUserObj = {
-                        studentName,rollNo,totalMarks,setFeedbackError
+                        studentName,rollNo,totalMarks,feedback,grade
                     }
+                    console.log(grade)
                     addstud(newUserObj)
                 }
             }}>Submit</button>

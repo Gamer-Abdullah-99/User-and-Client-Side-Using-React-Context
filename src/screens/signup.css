@@ -23,25 +23,29 @@
   border: none;
   padding: 5px;
 }
-label{
-    color: white;
+label {
+  color: white;
 }
 
-button{
-    color:black;
-    font-family: cursive;
-    font-size: large;
-    font-weight: bold;
-    height: 30px;
-    width: 100px;
-    border-radius: 10px;
-    border: none;
+#btn-1 {
+  color: black;
+  font-family: cursive;
+  font-size: large;
+  font-weight: bold;
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
 }
-button:hover{
-    color: blue;
-    cursor: pointer;
+#btn-1:hover {
+  color: blue;
+  cursor: pointer;
 }
-span{
-    color:red;
-    font-size: 15px;
-  }
+span {
+  color: red;
+  font-size: 15px;
+}
+a:hover {
+  color: blue;
+  cursor: pointer;
+}

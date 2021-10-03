@@ -1,14 +1,34 @@
 export let data = {
-  snacks: "Rio",
-  drink: "Coffee",
   authUser: {},
-  studentsData: [],
+  studentsData: [
+    {
+      studentName: "akram",
+      rollNo: "522",
+      totalMarks: "267",
+      feedback: "Average performance in class",
+      grade: "C",
+    },
+    {
+      studentName: "maaz",
+      rollNo: "134",
+      totalMarks: "168",
+      feedback: "Bad performance in class",
+      grade: "F",
+    },
+    {
+      studentName: "abdullah",
+      rollNo: "211",
+      totalMarks: "480",
+      feedback: "Good performance in class",
+      grade: "A+",
+    },
+  ],
   users: [
     {
       userName: "haider",
       email: "haider@gmail.com",
-      password: "123sss555",
-      role: "trainer",
+      password: "123456",
+      role: "teacher",
     },
     {
       userName: "abdullah",
@@ -19,16 +39,16 @@ export let data = {
     {
       userName: "akram",
       email: "akram@gmail.com",
-      password: "xse3sss555",
+      password: "123456",
       role: "student",
     },
   ],
+  loginCheck() {},
 };
 
 export function reducer(state, action) {
   switch (action.type) {
     case "SIGNUP_USER": {
-      console.log(state.users);
       let usersClone = state.users.slice(0);
       usersClone.push(action.payload);
       return {
@@ -37,21 +57,18 @@ export function reducer(state, action) {
       };
     }
     case "LOGIN_USER": {
-      console.log(state.authUser);
       return {
         ...state,
         authUser: action.payload,
       };
     }
     case "SIGNOUT_USER": {
-      console.log(state.authUser);
       return {
         ...state,
         authUser: {},
       };
     }
-    case "ADD_STUDENTS": {
-      console.log(state.studentsData);
+    case "ADD_STUDENTS_DATA": {
       let studentsDataClone = state.studentsData.slice(0);
       studentsDataClone.push(action.payload);
       return {
@@ -59,6 +76,23 @@ export function reducer(state, action) {
         studentsData: studentsDataClone,
       };
     }
+    case "REMOVE_STUDENTS_DATA": {
+      let a = action.payload;
+      let x = state.studentsData;
+      for (var i = 0; i < x.length; i++) {
+        if (x[i].studentName === a) {
+          x.splice(i, 1);
+          console.log(x);
+          break;
+        } else {
+          console.log("Hello");
+        }
+      }
+      return {
+        ...state,
+      };
+    }
+
     default:
       return state;
   }
